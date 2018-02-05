@@ -12,11 +12,53 @@
 <![endif]-->
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/sp.css">
+<link rel="stylesheet"  href="css/sp.css">
+<link rel="stylesheet" href="drawer.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.1.0/css/drawer.min.css">
+
+
 <!--[if lt IE 9]>
 <link rel="stylesheet" href="css/old_ie.css">
 <![endif]-->
+<script src="https://cdn.rawgit.com/ungki/bootstrap.dropdown/3.3.5/dropdown.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.1.0/js/drawer.min.js"></script>
+<script src="drawer.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="jquery.min.js"></script>
+<script src="iscroll.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+		  var trigger = $('.hamburger'),
+		      overlay = $('.overlay'),
+		     isClosed = false;
+
+		    trigger.click(function () {
+		      hamburger_cross();      
+		    });
+
+		    function hamburger_cross() {
+
+		      if (isClosed == true) {          
+		        overlay.hide();
+		        trigger.removeClass('is-open');
+		        trigger.addClass('is-closed');
+		        isClosed = false;
+		      } else {   
+		        overlay.show();
+		        trigger.removeClass('is-closed');
+		        trigger.addClass('is-open');
+		        isClosed = true;
+		      }
+		  }
+		  
+		  $('[data-toggle="offcanvas"]').click(function () {
+		        $('.drawer').toggleClass('drawer-open');
+		  });  
+		});
+	</script>
 <script>
 $(function () {
     setTimeout('top1()'); //アニメーションを実行
@@ -172,10 +214,51 @@ $(function(){
    });
 });
 </script>
+<script>
+$(document).ready(function() {
+  $(".drawer").drawer();
+});
+	</script>
+<script>
+$('.drawer').on('drawer.opened', function(){
+  console.log("開きました");
+});
+</script>
+<script>
+$('.drawer').on('drawer.closed', function(){
+  console.log("閉じました");
+});
+	</script>
+<script>
+$('.drawer').drawer({
+  class: {
+    nav: 'drawer-nav',
+    toggle: 'drawer-toggle',
+    overlay: 'drawer-overlay',
+    open: 'drawer-open',
+    close: 'drawer-close',
+    dropdown: 'drawer-dropdown'
+  },
+  iscroll: {
+    // Configuring the iScroll
+    // https://github.com/cubiq/iscroll#configuring-the-iscroll
+    mouseWheel: true,
+    preventDefault: false
+  },
+  showOverlay: true
+});
+	</script>
 </head>
-<body>
+<body class="drawer drawer--right drawer-closed">
 	<div id="wrapper">
-        <header>
+        <header role="banner">
+			<div class="menu_sp">
+			  <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas" href="">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+          </button>
+			<nav class="drawer-nav" role="navigation">
             <ul class="menu">
                 <li class="menu__single">
                     <a href="#first" class="init-bottom">1～5位</a>
@@ -195,18 +278,53 @@ $(function(){
                         <li><a href="#eighth">8位 HAIR DOONE ヘアドーン</a></li>
                         <li><a href="#ninth">9位 リリィジュ</a></li>
                         <li><a href="#tenth">10位 花蘭咲（からんさ）</a></li>
-                    </ul>
-                </li>
-                <li class="menu__single">
+                        </ul>
+                        </li>
+                        <li class="menu__single">
                     <a href="#cause">原因</a>
-                </li>
-                <li class="menu__single">
-                    <a href="#massage">マッサージ</a>
-                </li>
-                <li class="menu__single">
-                    <span><a href="#history">歴史</a></span>
-                </li>
-            </ul>
+                        </li>
+                        <li class="menu__single">
+                          <a href="#massage">マッサージ</a>
+                        </li>
+                         <li class="menu__single">
+                          <span><a href="#history">歴史</a></span>
+                         </li>
+                         </ul>
+			            </nav>
+			</div>
+			<div class="menu_pc">
+				<ul class="menu">
+					<li class="menu__single">
+						<a href="#first" class="init-bottom">1～5位</a>
+						<ul class="menu__second-level">
+							<li><a href="#first">1位 薬用プランテル</a></li>
+							<li><a href="#second">2位 WAKA（ワカ）</a></li>
+							<li><a href="#third">3位 BUBKA（ブブカ）</a></li>
+							<li><a href="#fourth">4位 ナノインパクト プラス</a></li>
+							<li><a href="#fifth">5位 薬用ポリピュアEX</a></li>
+						</ul>
+					</li>
+					<li class="menu__single">
+						<a href="#sixth" class="init-bottom">6～10位</a>
+						<ul class="menu__second-level">
+							<li><a href="#sixth">6位 チャップアップ</a></li>
+							<li><a href="#seventh">7位 ヘアーリスペクト</a></li>
+							<li><a href="#eighth">8位 HAIR DOONE ヘアドーン</a></li>
+							<li><a href="#ninth">9位 リリィジュ</a></li>
+							<li><a href="#tenth">10位 花蘭咲（からんさ）</a></li>
+						</ul>
+					</li>
+					<li class="menu__single">
+						<a href="#cause">原因</a>
+					</li>
+					<li class="menu__single">
+						<a href="#massage">マッサージ</a>
+					</li>
+					<li class="menu__single">
+						<span><a href="#history">歴史</a></span>
+					</li>
+				</ul>
+			</div>
             <div id="top">
                 <div id="top1"><img src="img/top1.png" alt="M字はげの方必見！オススメランキングベスト10"></div>
                 <div id="top2"><img src="img/top2.png" alt="知っておくべき育毛剤のチェックポイントを徹底ランキング"></div>
@@ -215,7 +333,8 @@ $(function(){
                 <div id="top5"><img src="img/top5.png" alt="コレを買えば間違いなし！"></div>
                 <div id="top6"><img src="img/top6.png"></div>
             </div><!--/#top-->
-        </header>
+			</header>
+			
         <div id="main">
             <div id="profile">
                 <h1>PROFILE</h1>
